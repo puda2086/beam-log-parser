@@ -7,7 +7,7 @@ import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.Flatten;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.example.transform.ExtractLogMetrics;
-import org.example.transform.ParseLogTransform;
+import org.example.transform.ParseLog;
 
 public class PipelineApplication {
 
@@ -25,7 +25,7 @@ public class PipelineApplication {
 
         pipeline.apply("Read logs", TextIO.read()
                         .from("src/main/resources/*.log"))
-                .apply("Extract logs", ParDo.of(new ParseLogTransform()))
+                .apply("Extract logs", ParDo.of(new ParseLog()))
                 .apply("Collect metrics", new ExtractLogMetrics())
                 .apply("Flatten output", Flatten.pCollections())
                 .apply(TextIO.write()

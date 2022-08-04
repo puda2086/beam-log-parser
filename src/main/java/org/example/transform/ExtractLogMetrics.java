@@ -24,7 +24,7 @@ public class ExtractLogMetrics extends PTransform<PCollection<LogElement>, PColl
         PCollection<String> uniqueIpCount = logsByIp
                 .apply("Map to IP addresses", Keys.create())
                 .apply("Count unique entries", Count.globally())
-                .apply("TO KV", WithKeys.of("uniqueIpCount"))
+                .apply("To KV", WithKeys.of("uniqueIpCount"))
                 .apply("Format elements", MapElements.via(new FormatKV()));
 
         // Count URL visits
