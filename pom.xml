@@ -104,6 +104,7 @@
         <profile>
             <id>direct-runner</id>
             <activation>
+                <activeByDefault>true</activeByDefault>
                 <property>
                     <name>env</name>
                     <value>dev</value>
