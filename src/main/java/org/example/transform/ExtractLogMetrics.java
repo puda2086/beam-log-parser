@@ -25,7 +25,7 @@ public class ExtractLogMetrics extends PTransform<PCollection<LogElement>, PColl
                 .apply("Map to IP addresses", Keys.create())
                 .apply("Count unique entries", Count.globally())
                 .apply("TO KV", WithKeys.of("uniqueIpCount"))
-                .apply("Format elements", MapElements.via(new FormatMap()));
+                .apply("Format elements", MapElements.via(new FormatKV()));
 
         // Count URL visits
         PCollection<String> mostVisitedUrls = input
@@ -39,7 +39,8 @@ public class ExtractLogMetrics extends PTransform<PCollection<LogElement>, PColl
                                 .map(KV::getKey)
                                 .collect(Collectors.toList())))
                 .apply("To KV", WithKeys.of("topVisitedUrls"))
-                .apply("Format elements", MapElements.via(new FormatMap()));
+                .apply("Aggregate results", GroupByKey.create())
+                .apply("Format elements", MapElements.via(new FormatKVMaps()));
 
         // Count most active IPs
         PCollection<String> mostActiveIps = logsByIp
@@ -51,7 +52,8 @@ public class ExtractLogMetrics extends PTransform<PCollection<LogElement>, PColl
                                 .map(KV::getKey)
                                 .collect(Collectors.toList())))
                 .apply("To KV", WithKeys.of("topActiveIps"))
-                .apply("Format elements", MapElements.via(new FormatMap()));
+                .apply("Aggregate results", GroupByKey.create())
+                .apply("Format elements", MapElements.via(new FormatKVMaps()));
 
         return PCollectionList.of(uniqueIpCount)
                 .and(mostVisitedUrls)

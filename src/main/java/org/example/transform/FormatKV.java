@@ -8,7 +8,7 @@ import org.apache.beam.sdk.values.KV;
 import java.io.Serializable;
 
 @RequiredArgsConstructor
-public class FormatMap extends SimpleFunction<KV<String, ? extends Serializable>, String> {
+public class FormatKV extends SimpleFunction<KV<String, ? extends Serializable>, String> {
 
     @Override
     public String apply(KV<String, ? extends Serializable> input) {
