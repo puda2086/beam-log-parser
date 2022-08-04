@@ -19,6 +19,9 @@ mvn compile exec:java \
   -Pdirect-runner
 ```
 
+**NOTE:** A maven wrapper is included for easier execution of the application. Simply replace `mvn` with `./mvnw` for
+Linux systems or `mvnw.cmd` for Windows.
+
 ## Testing the transforms
 
 Unit tests for transforms can be executed via,
