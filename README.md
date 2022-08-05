@@ -15,7 +15,7 @@ To execute, run the following:
 
 ```shell
 mvn compile exec:java \
-  -Dexec.mainClass=PipelineApplication \
+  -Dexec.mainClass=org.example.logscanner.PipelineApplication \
   -Dexec.args="--inputFile=<input_file_path> [--outputPrefix=<output_file_prefix>]"
   -Pdirect-runner
 ```
