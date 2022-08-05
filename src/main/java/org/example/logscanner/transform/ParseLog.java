@@ -1,9 +1,9 @@
-package org.example.transform;
+package org.example.logscanner.transform;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.beam.sdk.transforms.DoFn;
-import org.example.entity.LogElement;
-import org.example.entity.UserAgent;
+import org.example.logscanner.entity.LogElement;
+import org.example.logscanner.entity.UserAgent;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.example.transform;
+package org.example.logscanner.transform;
 
 import org.apache.beam.sdk.testing.PAssert;
 import org.apache.beam.sdk.testing.TestPipeline;
@@ -9,25 +9,23 @@ import org.apache.beam.sdk.values.PCollection;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.List;
-
-public class FormatKVMapsTest {
+public class FormatKVTest {
 
     @Rule
     public final transient TestPipeline testPipeline = TestPipeline.create();
 
     @Test
-    public void givenValidKVWithValueIterable_whenFormatting_thenOutputFormattedString() {
+    public void givenValidKV_whenFormatting_thenOutputFormattedString() {
 
         // Mock
-        KV<String, Iterable<String>> inputKV = KV.of("testKey", List.of("value1", "value2"));
+        KV<String, String> inputKV = KV.of("testKey", "testValue");
 
-        String expectedOutput = "testKey: [value1, value2]";
+        String expectedOutput = "testKey: testValue";
 
         // Invoke
-        PCollection<KV<String, Iterable<String>>> input = testPipeline.apply("Create input", Create.of(inputKV));
+        PCollection<KV<String, String>> input = testPipeline.apply("Create input", Create.of(inputKV));
 
-        PCollection<String> output = input.apply("Format KV with iterable", MapElements.via(new FormatKVMaps()));
+        PCollection<String> output = input.apply("Format KV", MapElements.via(new FormatKV()));
 
         // Assert
         PAssert.that(output).containsInAnyOrder(expectedOutput);
@@ -35,5 +33,4 @@ public class FormatKVMapsTest {
         testPipeline.run().waitUntilFinish();
 
     }
-
 }

@@ -1,10 +1,10 @@
-package org.example.transform;
+package org.example.logscanner.transform;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.beam.sdk.transforms.PTransform;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PCollectionList;
-import org.example.entity.LogElement;
+import org.example.logscanner.entity.LogElement;
 
 @Slf4j
 public class ExtractLogMetrics extends PTransform<PCollection<LogElement>, PCollectionList<String>> {

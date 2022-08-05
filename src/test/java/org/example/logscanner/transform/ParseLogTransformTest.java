@@ -1,4 +1,4 @@
-package org.example.transform;
+package org.example.logscanner.transform;
 
 import avro.shaded.com.google.common.collect.ImmutableList;
 import org.apache.beam.sdk.testing.PAssert;
@@ -6,8 +6,8 @@ import org.apache.beam.sdk.testing.TestPipeline;
 import org.apache.beam.sdk.transforms.Create;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.values.PCollection;
-import org.example.entity.LogElement;
-import org.example.entity.UserAgent;
+import org.example.logscanner.entity.LogElement;
+import org.example.logscanner.entity.UserAgent;
 import org.junit.Rule;
 import org.junit.Test;
 

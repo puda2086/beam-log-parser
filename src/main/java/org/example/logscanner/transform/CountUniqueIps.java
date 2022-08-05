@@ -1,9 +1,9 @@
-package org.example.transform;
+package org.example.logscanner.transform;
 
 import org.apache.beam.sdk.transforms.*;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.TypeDescriptor;
-import org.example.entity.LogElement;
+import org.example.logscanner.entity.LogElement;
 
 public class CountUniqueIps extends PTransform<PCollection<LogElement>, PCollection<String>> {
 

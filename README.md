@@ -15,7 +15,7 @@ To execute, run the following:
 
 ```shell
 mvn compile exec:java \
-  -Dexec.mainClass=org.example.PipelineApplication \ 
+  -Dexec.mainClass=PipelineApplication \ 
   -Pdirect-runner
 ```
 
