@@ -15,9 +15,16 @@ To execute, run the following:
 
 ```shell
 mvn compile exec:java \
-  -Dexec.mainClass=PipelineApplication \ 
+  -Dexec.mainClass=PipelineApplication \
+  -Dexec.args="--inputFile=<input_file_path> [--outputPrefix=<output_file_prefix>]"
   -Pdirect-runner
 ```
+
+The following arguments are accepted when running the application.
+
+* `--inputFile`Specifies the input log file name or file pattern.
+* `--outputPrefix` Filename prefix to which the output is written. The output file will have the suffix `.out`
+  . <br/>If an output file is not specified, the report will be written to a file titled `log_report.out`.
 
 **NOTE:** A maven wrapper is included for easier execution of the application. Simply replace `mvn` with `./mvnw` for
 Linux systems or `mvnw.cmd` for Windows.
