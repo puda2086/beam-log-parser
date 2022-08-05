@@ -1,4 +1,4 @@
-package org.example.comparator;
+package org.example.logscanner.comparator;
 
 import org.apache.beam.sdk.transforms.SerializableComparator;
 import org.apache.beam.sdk.values.KV;

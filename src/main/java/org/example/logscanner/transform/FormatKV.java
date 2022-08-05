@@ -1,4 +1,4 @@
-package org.example.transform;
+package org.example.logscanner.transform;
 
 
 import lombok.RequiredArgsConstructor;
